@@ -13,7 +13,7 @@ fixed), no auth, no tunnel, exactly like the web UIs.
 | Renewals | renewals | 4329 | Days-left coloring, swipe to complete (rolls recurring due dates server-side) or archive, add obligations |
 | Docs | docvault | 4327 | FTS search with snippets, inline PDF/image viewer, share sheet |
 
-## Building (requires a Mac with Xcode 16+)
+## Building (requires a Mac with Xcode 15.2 or newer)
 
 1. Clone (or copy) this folder onto the Mac.
 2. Open `Gram.xcodeproj` in Xcode.
@@ -34,5 +34,9 @@ fixed), no auth, no tunnel, exactly like the web UIs.
   on the Home tab. Settings also has a per-service health check.
 - Ports are constants in `Gram/API.swift` (`GramClient.Port`), mirroring
   gram-home's `APPS` table.
-- No external dependencies; the project uses Xcode 16 buildable folders, so
-  adding a Swift file to `Gram/` adds it to the target automatically.
+- No external dependencies. The project file is the classic Xcode format, so
+  add new Swift files through Xcode (not by dropping them in the folder).
+- The dark theme mirrors the web UIs' shared palette (`Gram/Theme.swift`),
+  including each app's accent color; the tab bar tint follows the active tab.
+- For headless testing, the launch argument `-initialTab agenda|calendar|renewals|docs`
+  opens the app on that tab (used with `xcrun simctl launch`).
